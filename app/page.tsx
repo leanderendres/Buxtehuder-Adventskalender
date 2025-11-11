@@ -272,33 +272,112 @@ export default function BuxtehudeAdventskalender() {
 
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              "Amadeus",
-              "Bunte Kinderkiste",
-              "Buxtehude SV",
-              "Café Docé",
-              "Das Futterhaus Buxtehude",
-              "Ernsting's family",
-              "EURONICS Wiegel",
-              "Flamingo Grill",
-              "Hermann – Schönes Leben",
-              "Kreativ Bastelparadies",
-              "lenya natürlich!",
-              "Ludwig von Karpff",
-              "Märchenhaft",
-              "Mundfein Pizzawerkstatt",
-              "Nähatelier kreativer Faden",
-              "Obsthof Brunckhorst",
-              "PfefferTörtchen",
-              "Ringfoto Schattke",
-              "S Fachl",
-              "Smash'lt Burger",
-              "Stil & Blüte",
-              "Sushi Palace",
-              "Taj Mahal",
+              {
+                name: "Amadeus",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Amadeus%20Logo%20Buxtehude%202025-KFO7OZZcWG7sZXonx2h5gd29EcMGLO.png",
+              },
+              {
+                name: "Bunte Kinderkiste",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bunte%20Kinderkiste%202025-GsQiYfGtHWUT1nZ25dpC7Mzq1UHyo2.jpg",
+              },
+              {
+                name: "Buxtehuder SV",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%20Buxtehude%202025-ihq2PwluxzC6m2CBXOmDusxJlaNMtK.png",
+              },
+              {
+                name: "Café Docé",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CafeDoce-1-rq50pg2VDAh7HOAGFiOikmdYslzrDF.png",
+              },
+              {
+                name: "Das Futterhaus Buxtehude",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Futterhaus%20Stade%20Logo%202025-dWcLOVCqgffTILIhj3YmvHDdPGUIlg.jpg",
+              },
+              {
+                name: "Ernsting's family",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%204%20Ernsting%20breit-JWj10XKtB3TI6gFz9KcMC4zK7lhZm9.jpg",
+              },
+              {
+                name: "EURONICS Wiegel",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Euronics_Wiegel-YucrQgjZ4dlEtlBbCFwjtcSMD41CTt.png",
+              },
+              {
+                name: "Flamingo Grill",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Flamingo%20Logo%20Buxtehude%202025-Qeu61NOyjbMY4iQxMn1yI5s0yIZlwF.png",
+              },
+              {
+                name: "Hermann – Schönes Leben",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hermann%20Scho%CC%88ner%20Leben%20Logo%20Buxtehude%202025-GlSBe3MxHAhycA6HdXIUN6QE9wMvQc.png",
+              },
+              {
+                name: "Kreativ Bastelparadies",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%208%20Bastelparadies%20kreativ.JPG-PLZRKTn6fVfyZVm2TPLkx9EYBmKcv9.jpeg",
+              },
+              {
+                name: "lenya natürlich!",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lenya%20Logo%20Buxtehude%202025-qLTLPjcRyDjnSo8qYWXaRTf7yPtGCw.png",
+              },
+              {
+                name: "Ludwig von Karpff",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%206%20von%20karpff%201-w6quNIPBfl0LmKS2RHYdUmmynrl5Dg.webp",
+              },
+              {
+                name: "Märchenhaft",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ma%CC%88rchenhaft%20Logo%20Buxtehude%202025-Ri3xw8nL2YOdsdOVtaZJCuhsOZHT61.png",
+              },
+              {
+                name: "Mundfein Pizzawerkstatt",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mundfein%20Logo-hAT6dPn5Rww4pLZhb1ZwYcbD84bX9F.png",
+              },
+              {
+                name: "Nähatelier kreativer Faden",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kreativer%20Faden-yVwwqKoxxuR1uvLoT6tfHDQwdgU4cX.png",
+              },
+              {
+                name: "Obsthof Brunckhorst",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Obsthof%20Brunckhorst%20Logo%202025-TYvRwKonlOClHy3mlfU7FYUJEEFCzy.png",
+              },
+              {
+                name: "PfefferTörtchen",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pfefferto%CC%88rtchen%20Nr%2015-WorAjLOlRwqDGo6UuHikpI37HA1VtX.jpg",
+              },
+              {
+                name: "Ringfoto Schattke",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%20Buxtehude%202025%20Nr%207-O8PRSgFXsO4Ur0WoV33nQWXFyvpBKE.jpg",
+              },
+              {
+                name: "s'Fachl",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sFachl%20Logo-3xPv7vLCWV46GmUTfnuh9ZTa56Vbvd.png",
+              },
+              {
+                name: "Smash'lt Burger",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Smash%20It%20Burger%20Logo%202025-0BhbotwopyCs7iB0eRjP57T2CQ9x38.webp",
+              },
+              {
+                name: "Stil & Blüte",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Buxtehude%202025%20Logo%20Nr%205-LZGyRQ97TLso7MTkCh3NCQhNF4qQ0X.png",
+              },
+              {
+                name: "Sushi Palace",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sushi%20Palace%20Logo%202025-ClO0vSKK2TyknMDsowTuYKdWxjWsPe.png",
+              },
+              {
+                name: "Taj Mahal",
+                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Taj%20Mahal%20Logo-Ck8e0Km9RVE9fUiwlxk24UfFOGtfFx.png",
+              },
             ].map((company, i) => (
               <Card key={i} className="hover:border-christmas-red/50 transition-all hover:shadow-md bg-card">
-                <CardContent className="p-6 text-center">
-                  <p className="font-medium text-sm">{company}</p>
+                <CardContent className="p-6 text-center flex flex-col items-center justify-center gap-3 min-h-[120px]">
+                  {company.logo && (
+                    <div className="relative w-full h-16 mb-2">
+                      <Image
+                        src={company.logo || "/placeholder.svg"}
+                        alt={`${company.name} Logo`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+                  <p className="font-medium text-sm">{company.name}</p>
                 </CardContent>
               </Card>
             ))}
@@ -306,52 +385,68 @@ export default function BuxtehudeAdventskalender() {
         </div>
       </section>
 
-      {/* Gewinnspiele */}
-      <section id="gewinnspiele" className="py-24">
+      {/* Eine dänische Tradition */}
+      <section id="gewinnspiele" className="py-24 relative overflow-hidden">
+        <div
+          className="absolute top-20 right-20 w-56 h-56 rounded-full bg-christmas-red/8 blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.12}px)` }}
+        />
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Gewinnspiele</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Adventskalender gewinnen</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Eine dänische Tradition</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Adventskalender mit Mehrwert – inspiriert von skandinavischer Gemeinschaft
+            </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-8">
-            <Card className="border-2 bg-card shadow-lg">
-              <CardContent className="pt-8 pb-8 space-y-6">
-                <p className="text-lg leading-relaxed">
-                  Unter den Kunden verschiedener teilnehmender Unternehmen verlosen wir jeweils einen unserer Buxtehuder
-                  Erlebnis-Adventskalender 2025. Die Teilnahme ist einfach:
-                </p>
-
-                <div className="space-y-4">
-                  {[
-                    "Ab dem Beginn des jeweiligen Gewinnspiels etwas im Unternehmen kaufen und den Kassenbon fotografieren.",
-                    "Das Bild des Kassenbons bei Facebook in unserem Account Buxtehude Erlebnis-Adventskalender 2025 oder bei Instagram Buxtehude_Adventskalender posten.",
-                    "Dem jeweiligen Kanal zusätzlich folgen.",
-                  ].map((step, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-christmas-red text-white flex items-center justify-center font-bold text-sm">
-                        {i + 1}
-                      </div>
-                      <p className="flex-1 pt-1 text-muted-foreground leading-relaxed">{step}</p>
-                    </div>
-                  ))}
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 bg-gradient-to-br from-christmas-green/5 to-christmas-red/5 shadow-xl">
+              <CardContent className="pt-10 pb-10 space-y-8">
+                <div className="flex justify-center mb-6">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-christmas-red/10 text-christmas-red">
+                    <Heart className="h-10 w-10" />
+                  </div>
                 </div>
 
-                <div className="pt-4 px-6 py-4 bg-muted rounded-xl">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    <strong>Rechtlicher Hinweis:</strong> Unter allen Teilnehmern verlosen wir die im Gewinnspiel
-                    angegebene Menge an Kalendern. Der Rechtsweg ist ausgeschlossen, Teilnahme ab 18 Jahren.
+                <p className="text-lg md:text-xl leading-relaxed text-center text-foreground">
+                  In 30 dänischen Städten sind Adventskalender mit Geschenken und Rabatten der örtlichen Unternehmen
+                  bereits eine weihnachtliche Tradition. Auch in Buxtehude haben wir 24 Mal Vorteile, Freude und
+                  Erlebnisse für die Kalenderkäufer eingesammelt.
+                </p>
+
+                <div className="pt-6 pb-6">
+                  <div className="h-px bg-gradient-to-r from-transparent via-christmas-gold to-transparent" />
+                </div>
+
+                <div className="bg-christmas-gold/10 rounded-xl p-6 border border-christmas-gold/30">
+                  <p className="text-lg leading-relaxed text-center">
+                    <span className="font-semibold text-christmas-gold">Ganz nach dänischem Vorbild</span> werden auch
+                    bei uns Teile des Erlöses für lokale gute Zwecke gespendet.
                   </p>
                 </div>
 
-                <div className="pt-4">
-                  <h4 className="font-semibold mb-3">Teilnehmende Unternehmen mit Gewinnspiel:</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Gift className="h-5 w-5 text-christmas-red flex-shrink-0" />
-                      <span>Sushi Palace Buxtehude</span>
-                    </li>
-                  </ul>
+                <div className="grid md:grid-cols-3 gap-6 pt-6">
+                  <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-christmas-green/10 text-christmas-green mx-auto">
+                      <Gift className="h-6 w-6" />
+                    </div>
+                    <h4 className="font-semibold">24 Erlebnisse</h4>
+                    <p className="text-sm text-muted-foreground">Lokale Geschenke und Vorteile</p>
+                  </div>
+                  <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-christmas-red/10 text-christmas-red mx-auto">
+                      <MapPin className="h-6 w-6" />
+                    </div>
+                    <h4 className="font-semibold">Lokale Unternehmen</h4>
+                    <p className="text-sm text-muted-foreground">Stärkung der Innenstadt</p>
+                  </div>
+                  <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-christmas-gold/10 text-christmas-gold mx-auto">
+                      <Heart className="h-6 w-6" />
+                    </div>
+                    <h4 className="font-semibold">Gute Zwecke</h4>
+                    <p className="text-sm text-muted-foreground">Spenden aus den Erlösen</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -411,8 +506,8 @@ export default function BuxtehudeAdventskalender() {
                         { name: "Bunte Kinderkiste", gift: "1 große weihnachtliche Überraschungstüte für Kinder" },
                         { name: "Buxtehuder SV", gift: "Beim Kauf deines Tickets ein zweites Ticket gratis dazu" },
                         { name: "Café Docé", gift: "1 Pastei de Natas pro Person für 1–2 Personen" },
-                        { name: "Das Futterhaus 1", gift: "1 Spezial-Tüte für Hund oder Katze" },
-                        { name: "Das Futterhaus 2", gift: "1 Paket Meisenknödel" },
+                        { name: "Das Futterhaus Buxtehude", gift: "1 Spezial-Tüte für Hund oder Katze" },
+                        { name: "Das Futterhaus Buxtehude", gift: "1 Paket Meisenknödel" },
                         { name: "Ernsting's family", gift: "20 % Rabatt auf deinen Einkauf" },
                         {
                           name: "EURONICS Wiegel",
@@ -434,7 +529,7 @@ export default function BuxtehudeAdventskalender() {
                         { name: "Obsthof Brunckhorst", gift: "1 große Tüte Äpfel mit einem leckeren Rezept" },
                         { name: "PfefferTörtchen", gift: "1 Stück hausgemachten Kuchen nach Wahl" },
                         { name: "Ringfoto Schattke", gift: "6 Handybilder ausgedruckt" },
-                        { name: "S Fachl", gift: "Die Tüte der Woche (Gummibären)" },
+                        { name: "s'Fachl", gift: "Die Tüte der Woche (Gummibären)" },
                         { name: "Smash'lt Burger", gift: "10 € Rabatt bei Abholung einer Bestellung ab 30 €" },
                         { name: "Stil & Blüte", gift: "1 adventliches Überraschungsgeschenk" },
                         {
@@ -443,7 +538,7 @@ export default function BuxtehudeAdventskalender() {
                         },
                         { name: "Taj Mahal", gift: "1 Vorspeise deiner Wahl aus der Karte gratis im Restaurant" },
                         {
-                          name: "Ludwig von Karpff, Weinlager Buxtehude",
+                          name: "Ludwig von Karpff",
                           gift: "1 Flasche Fiore del Sud Primitivo Susumaniello 0,75 l bei Einkauf ab 25 €",
                         },
                       ].map((item, i) => (
@@ -501,7 +596,7 @@ export default function BuxtehudeAdventskalender() {
                 },
                 {
                   q: "Wohin fließen die Spenden?",
-                  a: "Die Erlöse aus dem Kalenderverkauf unterstützen die Jugendarbeit des Buxtehude SV und den Altstadtverein bei seiner Arbeit für eine lebenswerte Innenstadt. Je mehr Kalender verkauft werden, desto höher sind die Spenden!",
+                  a: "Die Erlöse aus dem Kalenderverkauf unterstützen die Jugendarbeit des Buxtehuder SV und den Altstadtverein bei seiner Arbeit für eine lebenswerte Innenstadt. Je mehr Kalender verkauft werden, desto höher sind die Spenden!",
                 },
                 {
                   q: "Kann ich mehrere Kalender kaufen?",
@@ -527,27 +622,22 @@ export default function BuxtehudeAdventskalender() {
       {/* Kontakt */}
       <section id="kontakt" className="py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold">Kontakt</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Du hast Fragen zum Buxtehude Erlebnis-Adventskalender 2025? Schreib uns gern eine E-Mail.
-            </p>
+          <div className="max-w-xl mx-auto text-center space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold">Fragen?</h2>
+            <p className="text-lg text-muted-foreground">Kontaktiere uns per E-Mail</p>
 
-            <Card className="border-2 bg-card shadow-lg">
-              <CardContent className="pt-8 pb-8">
-                <div className="space-y-4">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-christmas-red/10 text-christmas-red mx-auto">
-                    <Mail className="h-8 w-8" />
-                  </div>
-                  <a
-                    href="mailto:Marc.Maerz@sspeag.onmicrosoft.com"
-                    className="text-lg text-christmas-red hover:underline font-medium block"
-                  >
-                    Marc.Maerz@sspeag.onmicrosoft.com
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="pt-4">
+              <Button
+                size="lg"
+                className="bg-christmas-red hover:bg-christmas-red/90 text-white h-14 px-8 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                asChild
+              >
+                <a href="mailto:Marc.Maerz@edneo.de">
+                  <Mail className="h-5 w-5 mr-2" />
+                  Marc.Maerz@edneo.de
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
