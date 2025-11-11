@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram } from "lucide-react"
 import { useEffect, useState } from "react"
-import { MapLocation } from "@/components/map-location"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -403,7 +402,7 @@ export default function BuxtehudeAdventskalender() {
             <Card className="border-2 bg-gradient-to-br from-christmas-green/5 to-christmas-red/5 shadow-xl">
               <CardContent className="pt-10 pb-10 space-y-8">
                 <div className="flex justify-center mb-6">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-christmas-red/10 text-christmas-red">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-christmas-red/10 text-christmas-red mx-auto">
                     <Heart className="h-10 w-10" />
                   </div>
                 </div>
@@ -455,8 +454,19 @@ export default function BuxtehudeAdventskalender() {
       </section>
 
       {/* Verkaufsstellen */}
-      <section id="verkaufsstellen" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section id="verkaufsstellen" className="py-24 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Buxtehude%20Weihnachtsmarkt%20Bild%201-i55XYrQYFWjeaNgmcOqaNfhCIyaIX7.jpg"
+            alt="Buxtehude Weihnachtsmarkt"
+            fill
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Verkaufsstellen</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -466,8 +476,46 @@ export default function BuxtehudeAdventskalender() {
             </p>
           </div>
 
-          <div className="max-w-6xl mx-auto">
-            <MapLocation />
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Bunte Kinderkiste", address: "St.-Petri-Platz 1–3, Buxtehude" },
+              { name: "Buxtehuder SV", address: "Viverstraße 2, Buxtehude" },
+              { name: "Das Futterhaus Buxtehude", address: "Konrad-Adenauer-Allee 3b, Buxtehude" },
+              { name: "EURONICS Wiegel", address: "Zwischen den Brücken 1, Buxtehude" },
+              { name: "Hermann – Schönes Leben", address: "Nordviver 2, Buxtehude" },
+              { name: "Kreativ Bastelparadies", address: "Bahnhofstraße 5, Buxtehude" },
+              { name: "Stil & Blüte", address: "Viverstraße 2, Buxtehude" },
+              { name: "Sushi Palace", address: "Alter Postweg 20, Buxtehude" },
+              { name: "s'Fachl", address: "Breite Straße 17, Buxtehude" },
+            ].map((location, i) => (
+              <Card
+                key={i}
+                className="border-2 hover:border-christmas-red/50 transition-all hover:shadow-lg bg-card/90 backdrop-blur-sm"
+              >
+                <CardContent className="pt-6 pb-6 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-christmas-red/10 text-christmas-red flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg mb-2">{location.name}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{location.address}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Card className="inline-block border-2 border-christmas-green/30 bg-christmas-green/5 backdrop-blur-sm">
+              <CardContent className="pt-6 pb-6 px-8">
+                <p className="text-sm text-muted-foreground">
+                  <Gift className="inline h-4 w-4 text-christmas-green mr-2" />
+                  Alle Verkaufsstellen befinden sich in Buxtehude und Umgebung
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -622,22 +670,32 @@ export default function BuxtehudeAdventskalender() {
       {/* Kontakt */}
       <section id="kontakt" className="py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto text-center space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold">Fragen?</h2>
-            <p className="text-lg text-muted-foreground">Kontaktiere uns per E-Mail</p>
+          <div className="max-w-2xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl md:text-5xl font-bold">Kontakt</h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Du hast Fragen zum Buxtehude Erlebnis-Adventskalender 2025? Schreib uns gern eine E-Mail.
+            </p>
 
-            <div className="pt-4">
-              <Button
-                size="lg"
-                className="bg-christmas-red hover:bg-christmas-red/90 text-white h-14 px-8 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105"
-                asChild
-              >
-                <a href="mailto:Marc.Maerz@edneo.de">
-                  <Mail className="h-5 w-5 mr-2" />
-                  Marc.Maerz@edneo.de
-                </a>
-              </Button>
-            </div>
+            <Card className="border-2 bg-card shadow-lg">
+              <CardContent className="pt-8 pb-8">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-christmas-red/10 text-christmas-red mx-auto">
+                    <Mail className="h-8 w-8" />
+                  </div>
+                  <Button
+                    size="lg"
+                    className="bg-christmas-red hover:bg-christmas-red/90 text-white w-full max-w-md mx-auto"
+                    asChild
+                  >
+                    <a href="mailto:Marc.Maerz@edneo.de">
+                      <Mail className="h-5 w-5 mr-2" />
+                      E-Mail senden
+                    </a>
+                  </Button>
+                  <p className="text-sm text-muted-foreground">Marc.Maerz@edneo.de</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
