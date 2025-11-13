@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram } from "lucide-react"
+import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram } from 'lucide-react'
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -103,9 +103,12 @@ export default function BuxtehudeAdventskalender() {
               <Button
                 size="lg"
                 className="bg-christmas-red hover:bg-christmas-red/90 text-white px-8 h-14 text-lg rounded-xl shadow-2xl hover:shadow-xl transition-all hover:scale-105"
+                asChild
               >
-                <Gift className="h-5 w-5 mr-2" />
-                Jetzt kaufen!
+                <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
+                  <Gift className="h-5 w-5 mr-2" />
+                  Jetzt kaufen!
+                </a>
               </Button>
               <Button
                 size="lg"
@@ -822,9 +825,12 @@ export default function BuxtehudeAdventskalender() {
         <Button
           size="lg"
           className="bg-christmas-red hover:bg-christmas-red/90 text-white shadow-2xl rounded-full h-14 px-6 animate-pulse hover:animate-none hover:scale-105 transition-all"
+          asChild
         >
-          <Gift className="h-5 w-5 mr-2" />
-          Jetzt kaufen!
+          <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
+            <Gift className="h-5 w-5 mr-2" />
+            Jetzt kaufen!
+          </a>
         </Button>
       </div>
     </div>
