@@ -3,19 +3,44 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram } from 'lucide-react'
+import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram, X } from 'lucide-react'
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
 export default function BuxtehudeAdventskalender() {
   const [scrollY, setScrollY] = useState(0)
+  const [showBlackFridayPopup, setShowBlackFridayPopup] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    // Check if popup was previously dismissed
+    const dismissed = localStorage.getItem('blackFridayPopupDismissed')
+    
+    // Check if current date is before December 2, 2025
+    const currentDate = new Date()
+    const cutoffDate = new Date('2025-12-02')
+    
+    // Show popup if not dismissed and before cutoff date
+    if (!dismissed && currentDate < cutoffDate) {
+      // Show popup after a short delay for better UX
+      const timer = setTimeout(() => {
+        setShowBlackFridayPopup(true)
+      }, 2000)
+      
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  const dismissPopup = () => {
+    setShowBlackFridayPopup(false)
+    localStorage.setItem('blackFridayPopupDismissed', 'true')
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -833,6 +858,62 @@ export default function BuxtehudeAdventskalender() {
           </a>
         </Button>
       </div>
+
+      {showBlackFridayPopup && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 w-full max-w-2xl animate-in slide-in-from-bottom duration-500">
+          <Card className="relative border-2 border-christmas-red/40 shadow-2xl bg-card/98 backdrop-blur-md overflow-hidden">
+            {/* Subtle Christmas accent on top */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-christmas-red via-christmas-gold to-christmas-green" />
+            
+            <CardContent className="relative pt-5 pb-5 px-6">
+              {/* Close button */}
+              <button
+                onClick={dismissPopup}
+                className="absolute top-3 right-3 w-7 h-7 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors group"
+                aria-label="Schließen"
+              >
+                <X className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+              </button>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pr-6">
+                {/* Icon */}
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-christmas-red/10 flex items-center justify-center">
+                    <Gift className="h-6 w-6 text-christmas-red" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                    Black Friday Special!
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-christmas-red text-white">
+                      -25%
+                    </span>
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Kaufe Deinen 2. Adventskalender mit <span className="font-semibold text-christmas-red">25% Rabatt</span>. 
+                    Einfach beim Bezahlen <span className="font-mono font-semibold text-foreground">"Nimm2!"</span> eingeben.
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <div className="flex-shrink-0 md:ml-2">
+                  <Button
+                    size="default"
+                    className="bg-christmas-red hover:bg-christmas-red/90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                    asChild
+                  >
+                    <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
+                      Zum Shop
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   )
 }
