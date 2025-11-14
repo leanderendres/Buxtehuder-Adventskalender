@@ -61,8 +61,8 @@ export default function BuxtehudeAdventskalender() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Buxtehude%20Weihnachtsmarkt%20Bild%201-i55XYrQYFWjeaNgmcOqaNfhCIyaIX7.jpg"
-            alt="Buxtehude Weihnachtsmarkt"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hase%20und%20Igel-ujezZXhNQqKLNfjtKW0Re4uXtfOvQD.jpg"
+            alt="Hase und Igel Weihnachten"
             fill
             className="object-cover"
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
