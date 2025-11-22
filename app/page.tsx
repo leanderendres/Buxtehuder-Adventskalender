@@ -3,10 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram, X } from 'lucide-react'
+import { Gift, Heart, MapPin, Sparkles, CalendarIcon, Mail, Facebook, Instagram, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { track } from "@vercel/analytics"
 
 export default function BuxtehudeAdventskalender() {
   const [scrollY, setScrollY] = useState(0)
@@ -20,26 +21,30 @@ export default function BuxtehudeAdventskalender() {
 
   useEffect(() => {
     // Check if popup was previously dismissed
-    const dismissed = localStorage.getItem('blackFridayPopupDismissed')
-    
+    const dismissed = localStorage.getItem("blackFridayPopupDismissed")
+
     // Check if current date is before December 2, 2025
     const currentDate = new Date()
-    const cutoffDate = new Date('2025-12-02')
-    
+    const cutoffDate = new Date("2025-12-02")
+
     // Show popup if not dismissed and before cutoff date
     if (!dismissed && currentDate < cutoffDate) {
       // Show popup after a short delay for better UX
       const timer = setTimeout(() => {
         setShowBlackFridayPopup(true)
       }, 2000)
-      
+
       return () => clearTimeout(timer)
     }
   }, [])
 
   const dismissPopup = () => {
     setShowBlackFridayPopup(false)
-    localStorage.setItem('blackFridayPopupDismissed', 'true')
+    localStorage.setItem("blackFridayPopupDismissed", "true")
+  }
+
+  const handleBuyClick = (location: string) => {
+    track("buy_button_click", { location })
   }
 
   return (
@@ -86,7 +91,7 @@ export default function BuxtehudeAdventskalender() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hase%20und%20Igel-ujezZXhNQqKLNfjtKW0Re4uXtfOvQD.jpg"
+            src="/images/hase-20und-20igel.jpg"
             alt="Hase und Igel Weihnachten"
             fill
             className="object-cover"
@@ -130,7 +135,12 @@ export default function BuxtehudeAdventskalender() {
                 className="bg-christmas-red hover:bg-christmas-red/90 text-white px-8 h-14 text-lg rounded-xl shadow-2xl hover:shadow-xl transition-all hover:scale-105"
                 asChild
               >
-                <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://buxtehude-adventskalender.myshopify.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleBuyClick("hero_section")}
+                >
                   <Gift className="h-5 w-5 mr-2" />
                   Jetzt kaufen!
                 </a>
@@ -244,12 +254,7 @@ export default function BuxtehudeAdventskalender() {
               <CardContent className="pt-8 pb-8 space-y-4">
                 <div className="flex justify-center mb-4">
                   <div className="relative w-32 h-32">
-                    <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%2010%20BSV-LVxfjAhFlDblp78yo3GjCnUW2p6swc.png"
-                      alt="Buxtehuder SV Logo"
-                      fill
-                      className="object-contain"
-                    />
+                    <Image src="/images/nr-2010-20bsv.png" alt="Buxtehuder SV Logo" fill className="object-contain" />
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-center">Buxtehuder SV</h3>
@@ -264,7 +269,7 @@ export default function BuxtehudeAdventskalender() {
                 <div className="flex justify-center mb-4">
                   <div className="relative w-32 h-32">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Altstadtverein-OD9cxMgFbil8KZGU75mlr9JY5QCzyx.png"
+                      src="/images/altstadtverein.png"
                       alt="Altstadtverein Buxtehude Logo"
                       fill
                       className="object-contain"
@@ -301,95 +306,95 @@ export default function BuxtehudeAdventskalender() {
             {[
               {
                 name: "Amadeus",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Amadeus%20Logo%20Buxtehude%202025-KFO7OZZcWG7sZXonx2h5gd29EcMGLO.png",
+                logo: "/images/amadeus-20logo-20buxtehude-202025.png",
               },
               {
                 name: "Bunte Kinderkiste",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bunte%20Kinderkiste%202025-GsQiYfGtHWUT1nZ25dpC7Mzq1UHyo2.jpg",
+                logo: "/images/bunte-20kinderkiste-202025.jpg",
               },
               {
                 name: "Buxtehuder SV",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%20Buxtehude%202025-ihq2PwluxzC6m2CBXOmDusxJlaNMtK.png",
+                logo: "/images/logo-20buxtehude-202025.png",
               },
               {
                 name: "Café Docé",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CafeDoce-1-rq50pg2VDAh7HOAGFiOikmdYslzrDF.png",
+                logo: "/images/cafedoce-1.png",
               },
               {
                 name: "Das Futterhaus Buxtehude",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Futterhaus%20Stade%20Logo%202025-dWcLOVCqgffTILIhj3YmvHDdPGUIlg.jpg",
+                logo: "/images/futterhaus-20stade-20logo-202025.jpg",
               },
               {
                 name: "Ernsting's family",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%204%20Ernsting%20breit-JWj10XKtB3TI6gFz9KcMC4zK7lhZm9.jpg",
+                logo: "/images/nr-204-20ernsting-20breit.jpg",
               },
               {
                 name: "EURONICS Wiegel",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Euronics_Wiegel-YucrQgjZ4dlEtlBbCFwjtcSMD41CTt.png",
+                logo: "/images/euronics-wiegel.png",
               },
               {
                 name: "Flamingo Grill",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Flamingo%20Logo%20Buxtehude%202025-Qeu61NOyjbMY4iQxMn1yI5s0yIZlwF.png",
+                logo: "/images/flamingo-20logo-20buxtehude-202025.png",
               },
               {
                 name: "Hermann – Schönes Leben",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hermann%20Scho%CC%88ner%20Leben%20Logo%20Buxtehude%202025-GlSBe3MxHAhycA6HdXIUN6QE9wMvQc.png",
+                logo: "/images/hermann-20scho-cc-88ner-20leben-20logo-20buxtehude-202025.png",
               },
               {
                 name: "Kreativ Bastelparadies",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%208%20Bastelparadies%20kreativ.JPG-PLZRKTn6fVfyZVm2TPLkx9EYBmKcv9.jpeg",
+                logo: "/images/nr-208-20bastelparadies-20kreativ.jpeg",
               },
               {
                 name: "lenya natürlich!",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lenya%20Logo%20Buxtehude%202025-qLTLPjcRyDjnSo8qYWXaRTf7yPtGCw.png",
+                logo: "/images/lenya-20logo-20buxtehude-202025.png",
               },
               {
                 name: "Ludwig von Karpff",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nr%206%20von%20karpff%201-w6quNIPBfl0LmKS2RHYdUmmynrl5Dg.webp",
+                logo: "/images/nr-206-20von-20karpff-201.webp",
               },
               {
                 name: "Märchenhaft",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ma%CC%88rchenhaft%20Logo%20Buxtehude%202025-Ri3xw8nL2YOdsdOVtaZJCuhsOZHT61.png",
+                logo: "/images/ma-cc-88rchenhaft-20logo-20buxtehude-202025.png",
               },
               {
                 name: "Mundfein Pizzawerkstatt",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mundfein%20Logo-hAT6dPn5Rww4pLZhb1ZwYcbD84bX9F.png",
+                logo: "/images/mundfein-20logo.png",
               },
               {
                 name: "Nähatelier kreativer Faden",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kreativer%20Faden-yVwwqKoxxuR1uvLoT6tfHDQwdgU4cX.png",
+                logo: "/images/kreativer-20faden.png",
               },
               {
                 name: "Obsthof Brunckhorst",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Obsthof%20Brunckhorst%20Logo%202025-TYvRwKonlOClHy3mlfU7FYUJEEFCzy.png",
+                logo: "/images/obsthof-20brunckhorst-20logo-202025.png",
               },
               {
                 name: "PfefferTörtchen",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pfefferto%CC%88rtchen%20Nr%2015-WorAjLOlRwqDGo6UuHikpI37HA1VtX.jpg",
+                logo: "/images/pfefferto-cc-88rtchen-20nr-2015.jpg",
               },
               {
                 name: "Ringfoto Schattke",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%20Buxtehude%202025%20Nr%207-O8PRSgFXsO4Ur0WoV33nQWXFyvpBKE.jpg",
+                logo: "/images/logo-20buxtehude-202025-20nr-207.jpg",
               },
               {
                 name: "s'Fachl",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sFachl%20Logo-3xPv7vLCWV46GmUTfnuh9ZTa56Vbvd.png",
+                logo: "/images/sfachl-20logo.png",
               },
               {
                 name: "Smash'lt Burger",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Smash%20It%20Burger%20Logo%202025-0BhbotwopyCs7iB0eRjP57T2CQ9x38.webp",
+                logo: "/images/smash-20it-20burger-20logo-202025.webp",
               },
               {
                 name: "Stil & Blüte",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Buxtehude%202025%20Logo%20Nr%205-LZGyRQ97TLso7MTkCh3NCQhNF4qQ0X.png",
+                logo: "/images/buxtehude-202025-20logo-20nr-205.png",
               },
               {
                 name: "Sushi Palace",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sushi%20Palace%20Logo%202025-ClO0vSKK2TyknMDsowTuYKdWxjWsPe.png",
+                logo: "/images/sushi-20palace-20logo-202025.png",
               },
               {
                 name: "Taj Mahal",
-                logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Taj%20Mahal%20Logo-Ck8e0Km9RVE9fUiwlxk24UfFOGtfFx.png",
+                logo: "/images/taj-20mahal-20logo.png",
               },
             ].map((company, i) => (
               <Card key={i} className="hover:border-christmas-red/50 transition-all hover:shadow-md bg-card">
@@ -486,7 +491,7 @@ export default function BuxtehudeAdventskalender() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Buxtehude%20Weihnachtsmarkt%20Bild%201-i55XYrQYFWjeaNgmcOqaNfhCIyaIX7.jpg"
+            src="/images/buxtehude-20weihnachtsmarkt-20bild-201.jpg"
             alt="Buxtehude Weihnachtsmarkt"
             fill
             className="object-cover opacity-20"
@@ -527,7 +532,7 @@ export default function BuxtehudeAdventskalender() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-2">{location.name}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{location.address}</p>
+                      <p className="text-sm text-muted-foreground">{location.address}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -846,13 +851,19 @@ export default function BuxtehudeAdventskalender() {
         </div>
       </footer>
 
+      {/* Fixed CTA Button - Bottom Right */}
       <div className="fixed bottom-6 right-6 z-40">
         <Button
           size="lg"
-          className="bg-christmas-red hover:bg-christmas-red/90 text-white shadow-2xl rounded-full h-14 px-6 animate-pulse hover:animate-none hover:scale-105 transition-all"
+          className="bg-christmas-red hover:bg-christmas-red/90 text-white shadow-2xl hover:shadow-xl transition-all hover:scale-105 rounded-full px-6 h-14"
           asChild
         >
-          <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://buxtehude-adventskalender.myshopify.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => handleBuyClick("fixed_bottom_button")}
+          >
             <Gift className="h-5 w-5 mr-2" />
             Jetzt kaufen!
           </a>
@@ -860,58 +871,54 @@ export default function BuxtehudeAdventskalender() {
       </div>
 
       {showBlackFridayPopup && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 w-full max-w-2xl animate-in slide-in-from-bottom duration-500">
-          <Card className="relative border-2 border-christmas-red/40 shadow-2xl bg-card/98 backdrop-blur-md overflow-hidden">
-            {/* Subtle Christmas accent on top */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-christmas-red via-christmas-gold to-christmas-green" />
-            
-            <CardContent className="relative pt-5 pb-5 px-6">
+        // Updated Black Friday Popup structure and styling
+        <div className="fixed inset-0 z-50 flex items-end justify-center p-4 pointer-events-none">
+          <div className="pointer-events-auto w-full max-w-2xl bg-card border-2 border-border rounded-2xl shadow-2xl animate-in slide-in-from-bottom-5">
+            {/* Decorative gradient line */}
+            <div className="h-1.5 bg-gradient-to-r from-christmas-red via-christmas-gold to-christmas-green rounded-t-2xl" />
+
+            <div className="p-8 relative">
               {/* Close button */}
               <button
                 onClick={dismissPopup}
-                className="absolute top-3 right-3 w-7 h-7 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors group"
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
                 aria-label="Schließen"
               >
-                <X className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+                <X className="h-5 w-5" />
               </button>
 
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pr-6">
-                {/* Icon */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-christmas-red/10 flex items-center justify-center">
-                    <Gift className="h-6 w-6 text-christmas-red" />
-                  </div>
+              <div className="flex flex-col items-center text-center space-y-4 pr-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-christmas-red/10 rounded-full">
+                  <Sparkles className="h-5 w-5 text-christmas-red" />
+                  <span className="font-semibold text-christmas-red">Black Friday Special!</span>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-                    Black Friday Special!
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-christmas-red text-white">
-                      -25%
-                    </span>
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Kaufe Deinen 2. Adventskalender mit <span className="font-semibold text-christmas-red">25% Rabatt</span>. 
-                    Einfach beim Bezahlen <span className="font-mono font-semibold text-foreground">"Nimm2!"</span> eingeben.
-                  </p>
-                </div>
+                <h3 className="text-2xl font-bold">
+                  Kaufe Deinen 2. Adventskalender mit <span className="text-christmas-red">25% Rabatt</span>
+                </h3>
 
-                {/* CTA Button */}
-                <div className="flex-shrink-0 md:ml-2">
-                  <Button
-                    size="default"
-                    className="bg-christmas-red hover:bg-christmas-red/90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
-                    asChild
+                <p className="text-muted-foreground text-lg">
+                  Einfach beim Bezahlen <span className="font-semibold text-foreground">"Nimm2!"</span> eingeben.
+                </p>
+
+                <Button
+                  size="lg"
+                  className="bg-christmas-red hover:bg-christmas-red/90 text-white px-8 h-12 text-base rounded-xl mt-4"
+                  asChild
+                >
+                  <a
+                    href="https://buxtehude-adventskalender.myshopify.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleBuyClick("black_friday_popup")}
                   >
-                    <a href="https://buxtehude-adventskalender.myshopify.com" target="_blank" rel="noopener noreferrer">
-                      Zum Shop
-                    </a>
-                  </Button>
-                </div>
+                    <Gift className="h-5 w-5 mr-2" />
+                    Zum Shop
+                  </a>
+                </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       )}
     </div>
